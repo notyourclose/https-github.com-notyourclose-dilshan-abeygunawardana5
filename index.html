@@ -1434,6 +1434,212 @@
           font-size: 1.2em;
           vertical-align: middle;
         }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 16px;
+                height: auto;
+            }
+            .navbar .logo {
+                margin: 16px 0 8px 0;
+                font-size: 1.2rem;
+            }
+            .navbar nav {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+            .navbar nav a {
+                padding: 12px 0;
+                font-size: 1.05rem;
+                width: 100%;
+                border-bottom: 1px solid #23263a;
+            }
+            .navbar nav a:last-child {
+                border-bottom: none;
+            }
+            .main-section {
+                flex-direction: column;
+                padding: 80px 4vw 0 4vw;
+                min-height: unset;
+                gap: 32px;
+            }
+            .left-content, .right-content {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+            }
+            .main-title {
+                font-size: 2rem;
+            }
+            .profile-img {
+                width: 160px;
+                height: 160px;
+                margin: 0 auto 24px auto;
+            }
+        }
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1200px) {
+            .main-section {
+                padding: 0 5vw;
+            }
+            .channels-cards, .achievements-cards, .media-cards {
+                gap: 24px;
+            }
+            .fanart-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 0 24px;
+            }
+            .navbar nav {
+                gap: 24px;
+            }
+            .main-section {
+                padding: 0 4vw;
+            }
+            .main-title {
+                font-size: 2.4rem;
+            }
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+            .channels-cards, .achievements-cards, .media-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .channel-card, .achievement-card, .media-card {
+                width: 100%;
+                max-width: 500px;
+            }
+            .about-stats, .about-expertise, .podcast-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-stat-card, .about-expertise-card, .podcast-stat-card {
+                width: 100%;
+                max-width: 500px;
+            }
+            .podcast-main {
+                flex-direction: column;
+                text-align: center;
+            }
+            .podcast-main-content {
+                max-width: 100%;
+            }
+            .contact-main {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .contact-form-col, .contact-info-col {
+                width: 100%;
+                max-width: 500px;
+            }
+            .contact-social-row {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 16px;
+            }
+            .navbar .logo {
+                margin-bottom: 16px;
+            }
+            .navbar nav {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+            .navbar nav a {
+                padding: 12px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(59,130,246,0.1);
+            }
+            .navbar nav a:last-child {
+                border-bottom: none;
+            }
+            .main-section {
+                padding: 100px 4vw 40px 4vw;
+                flex-direction: column;
+                text-align: center;
+            }
+            .left-content {
+                margin-bottom: 40px;
+            }
+            .main-title {
+                font-size: 2rem;
+            }
+            .profile-img {
+                width: 220px;
+                height: 220px;
+            }
+            .channels-title, .about-title, .achievements-title, 
+            .media-title, .podcast-title, .fanart-title, .apps-title {
+                font-size: 1.8rem;
+            }
+            .channel-card, .achievement-card, .media-card,
+            .about-stat-card, .about-expertise-card, .podcast-stat-card {
+                padding: 24px;
+            }
+            .contact-title {
+                font-size: 1.8rem;
+            }
+            .contact-social-btn {
+                width: 100%;
+                margin: 8px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            .roles {
+                font-size: 1rem;
+            }
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+            .channel-stats, .about-stats, .podcast-stats {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .stat, .about-stat-card, .podcast-stat-card {
+                width: 100%;
+            }
+            .fanart-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.95rem;
+            }
+            .contact-btn {
+                font-size: 1rem;
+            }
+        }
+
+        /* Fix for iOS Safari 100vh issue */
+        @supports (-webkit-touch-callout: none) {
+            .main-section, .channels-section, #about-section,
+            #achievements-section, #media-section, #podcast-section,
+            #fanart-section, #apps-section, .contact-section {
+                min-height: -webkit-fill-available;
+            }
+        }
     </style>
     <!-- For icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
