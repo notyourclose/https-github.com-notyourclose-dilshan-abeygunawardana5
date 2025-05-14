@@ -25,87 +25,53 @@
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
         }
-        /* --- Glassmorphism Navbar --- */
         .navbar {
-          width: 100%;
-          background: rgba(17,19,26,0.75);
-          backdrop-filter: blur(12px);
-          border-bottom: 1.5px solid rgba(59,130,246,0.10);
-          box-shadow: 0 4px 32px 0 rgba(59,130,246,0.08);
-          display: flex;
-          align-items: center;
-          padding: 0 48px;
-          height: 64px;
-          box-sizing: border-box;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: 100;
-          transition: background 0.3s, box-shadow 0.3s;
+            width: 100%;
+            background: rgba(17,19,26,0.98);
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
-
-        /* --- Clickable Logo --- */
         .navbar .logo {
-          font-weight: 700;
-          font-size: 1.5rem;
-          color: #fff;
-          margin-right: 48px;
-          letter-spacing: 1px;
-          text-decoration: none;
-          cursor: pointer;
-          transition: color 0.2s;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 48px;
+            letter-spacing: 1px;
         }
-        .navbar .logo:hover {
-          color: #3b82f6;
+        .navbar nav {
+            display: flex;
+            gap: 32px;
         }
-
-        /* --- Animated Underline for Nav Links --- */
         .navbar nav a {
-          color: #bbb;
-          text-decoration: none;
-          font-size: 1rem;
-          font-weight: 500;
-          position: relative;
-          padding: 0 0 4px 0;
-          transition: color 0.2s;
-          overflow: hidden;
-        }
-        .navbar nav a::after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 0%;
-          height: 2px;
-          background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
-          border-radius: 2px;
-          transition: width 0.3s cubic-bezier(.77,0,.18,1);
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
         }
         .navbar nav a.active,
         .navbar nav a:hover {
-          color: #3b82f6;
+            color: #3b82f6;
         }
-        .navbar nav a.active::after,
-        .navbar nav a:hover::after {
-          width: 100%;
+        .navbar nav a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
         }
-
-        /* --- Social Icons (Desktop Only) --- */
-        .navbar .social-icons {
-          display: flex;
-          gap: 18px;
-          margin-left: auto;
-        }
-        .navbar .social-icons a {
-          color: #bbb;
-          font-size: 1.18rem;
-          transition: color 0.2s;
-        }
-        .navbar .social-icons a:hover {
-          color: #3b82f6;
-        }
-
         .main-section {
             display: flex;
             align-items: center;
@@ -1342,7 +1308,6 @@
         .contact-phone-link:hover {
             text-decoration: underline;
         }
-        /* Modern Social Button Styles */
         .contact-social-row {
             display: flex;
             flex-wrap: wrap;
@@ -1351,66 +1316,33 @@
             margin-top: 32px;
         }
         .contact-social-btn {
-            --clr: #3b82f6;
-            position: relative;
-            background: #222;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            border: none;
-            letter-spacing: 0.1rem;
-            font-size: 1rem;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: 0.2s;
-            margin: 0.5rem;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1rem;
             font-weight: 600;
-            border: 2px solid var(--clr);
-        }
-        .contact-social-btn span {
-            position: relative;
-            z-index: 1;
-        }
-        .contact-social-btn i {
-            position: absolute;
-            inset: 0;
-            display: block;
-            z-index: 0;
-        }
-        .contact-social-btn:hover {
-            letter-spacing: 0.2rem;
-            padding: 1.1rem 2.7rem;
-            background: var(--clr);
+            border-radius: 22px;
+            padding: 8px 22px;
+            border: 2px solid #23263a;
             color: #fff;
-            animation: box 3s infinite;
+            background: transparent;
+            text-decoration: none;
+            transition: border 0.2s, color 0.2s, background 0.2s;
         }
-        .contact-social-btn::before {
-            content: "";
-            position: absolute;
-            inset: 2px;
-            background: #272822;
-            border-radius: 6px;
-            z-index: 0;
-            transition: background 0.2s;
-        }
-        /* Custom colors for each button */
-        .contact-social-btn.yt { --clr: #ff0000; }
-        .contact-social-btn.myhub { --clr: #3b82f6; }
-        .contact-social-btn.ig { --clr: #e1306c; }
-        .contact-social-btn.fb { --clr: #1877f3; }
-        .contact-social-btn.li { --clr: #8a2be2; }
-        .contact-social-btn.sp { --clr: #1db954; }
-        .contact-social-btn.site { --clr: #0ff0fc; }
-        @keyframes box {
-            0% { box-shadow: 0 0 10px var(--clr); }
-            50% { box-shadow: 0 0 40px var(--clr); }
-            100% { box-shadow: 0 0 10px var(--clr); }
-        }
+        .contact-social-btn.yt { border-color: #ff0000; color: #ff0000; }
+        .contact-social-btn.yt:hover { background: #ff0000; color: #fff; }
+        .contact-social-btn.myhub { border-color: #3b82f6; color: #3b82f6; }
+        .contact-social-btn.myhub:hover { background: #3b82f6; color: #fff; }
+        .contact-social-btn.ig { border-color: #e1306c; color: #e1306c; }
+        .contact-social-btn.ig:hover { background: #e1306c; color: #fff; }
+        .contact-social-btn.fb { border-color: #1877f3; color: #1877f3; }
+        .contact-social-btn.fb:hover { background: #1877f3; color: #fff; }
+        .contact-social-btn.li { border-color: #0a66c2; color: #0a66c2; }
+        .contact-social-btn.li:hover { background: #0a66c2; color: #fff; }
+        .contact-social-btn.sp { border-color: #1db954; color: #1db954; }
+        .contact-social-btn.sp:hover { background: #1db954; color: #fff; }
+        .contact-social-btn.site { border-color: #3b82f6; color: #3b82f6; }
+        .contact-social-btn.site:hover { background: #3b82f6; color: #fff; }
         @media (max-width: 900px) {
             .contact-main {
                 flex-direction: column;
@@ -1418,232 +1350,6 @@
             }
             .contact-form-col, .contact-info-col {
                 max-width: 100%;
-            }
-        }
-        .contact-social-btn span i {
-          margin-right: 10px;
-          margin-left: 0;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.yt span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.myhub span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.ig span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.fb span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.li span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.sp span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.site span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 0 16px;
-                height: auto;
-            }
-            .navbar .logo {
-                margin: 16px 0 8px 0;
-                font-size: 1.2rem;
-            }
-            .navbar nav {
-                flex-direction: column;
-                gap: 0;
-                width: 100%;
-            }
-            .navbar nav a {
-                padding: 12px 0;
-                font-size: 1.05rem;
-                width: 100%;
-                border-bottom: 1px solid #23263a;
-            }
-            .navbar nav a:last-child {
-                border-bottom: none;
-            }
-            .main-section {
-                flex-direction: column;
-                padding: 80px 4vw 0 4vw;
-                min-height: unset;
-                gap: 32px;
-            }
-            .left-content, .right-content {
-                width: 100%;
-                align-items: center;
-                text-align: center;
-                justify-content: center;
-            }
-            .main-title {
-                font-size: 2rem;
-            }
-            .profile-img {
-                width: 160px;
-                height: 160px;
-                margin: 0 auto 24px auto;
-            }
-        }
-        /* Enhanced Responsive Styles */
-        @media (max-width: 1200px) {
-            .main-section {
-                padding: 0 5vw;
-            }
-            .channels-cards, .achievements-cards, .media-cards {
-                gap: 24px;
-            }
-            .fanart-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 900px) {
-            .main-section {
-                padding: 0 4vw;
-            }
-            .main-title {
-                font-size: 2.4rem;
-            }
-            .profile-img {
-                width: 280px;
-                height: 280px;
-            }
-            .channels-cards, .achievements-cards, .media-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            .channel-card, .achievement-card, .media-card {
-                width: 100%;
-                max-width: 500px;
-            }
-            .about-stats, .about-expertise, .podcast-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            .about-stat-card, .about-expertise-card, .podcast-stat-card {
-                width: 100%;
-                max-width: 500px;
-            }
-            .podcast-main {
-                flex-direction: column;
-                text-align: center;
-            }
-            .podcast-main-content {
-                max-width: 100%;
-            }
-            .contact-main {
-                flex-direction: column;
-                gap: 32px;
-            }
-            .contact-form-col, .contact-info-col {
-                width: 100%;
-                max-width: 500px;
-            }
-            .contact-social-row {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-section {
-                padding: 100px 4vw 40px 4vw;
-                flex-direction: column;
-                text-align: center;
-            }
-            .left-content {
-                margin-bottom: 40px;
-            }
-            .main-title {
-                font-size: 2rem;
-            }
-            .profile-img {
-                width: 220px;
-                height: 220px;
-            }
-            .channels-title, .about-title, .achievements-title, 
-            .media-title, .podcast-title, .fanart-title, .apps-title {
-                font-size: 1.8rem;
-            }
-            .channel-card, .achievement-card, .media-card,
-            .about-stat-card, .about-expertise-card, .podcast-stat-card {
-                padding: 24px;
-            }
-            .contact-title {
-                font-size: 1.8rem;
-            }
-            .contact-social-btn {
-                width: 100%;
-                margin: 8px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 1.8rem;
-            }
-            .roles {
-                font-size: 1rem;
-            }
-            .profile-img {
-                width: 180px;
-                height: 180px;
-            }
-            .channel-stats, .about-stats, .podcast-stats {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .stat, .about-stat-card, .podcast-stat-card {
-                width: 100%;
-            }
-            .fanart-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form input,
-            .contact-form textarea {
-                font-size: 0.95rem;
-            }
-            .contact-btn {
-                font-size: 1rem;
-            }
-        }
-
-        /* Fix for iOS Safari 100vh issue */
-        @supports (-webkit-touch-callout: none) {
-            .main-section, .channels-section, #about-section,
-            #achievements-section, #media-section, #podcast-section,
-            #fanart-section, #apps-section, .contact-section {
-                min-height: -webkit-fill-available;
             }
         }
     </style>
@@ -1652,7 +1358,7 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="#home" class="logo">Dilshan</a>
+        <div class="logo">Dilshan</div>
         <nav>
             <a href="#home" class="active">Home</a>
             <a href="#channels-section">Channels</a>
@@ -1664,12 +1370,6 @@
             <a href="#apps-section">Apps</a>
             <a href="#contact-section">Contact</a>
         </nav>
-        <div class="social-icons">
-            <a href="https://youtube.com/@myhublk" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/dilshanabey" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/18rJAAjMuG" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-        </div>
     </div>
     <div id="home" class="main-section">
         <div class="left-content">
@@ -1993,13 +1693,13 @@
             </div>
         </div>
         <div class="contact-social-row">
-            <a href="https://youtube.com/@daysofdilshan?si=BLAtHfgmrOIaeHhm" class="contact-social-btn yt" target="_blank"><span><i class="fab fa-youtube"></i>Days of Dilshan</span><i></i></a>
-            <a href="https://youtube.com/@myhublk?si=-ykLta8waZDQ94lF" class="contact-social-btn myhub" target="_blank"><span><i class="fas fa-globe"></i>myhub.lk</span><i></i></a>
-            <a href="https://www.instagram.com/dilshanabey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="contact-social-btn ig" target="_blank"><span><i class="fab fa-instagram"></i>Instagram</span><i></i></a>
-            <a href="https://www.facebook.com/share/18rJAAjMuG/?mibextid=wwXIfr" class="contact-social-btn fb" target="_blank"><span><i class="fab fa-facebook"></i>Facebook</span><i></i></a>
-            <a href="#" class="contact-social-btn li"><span><i class="fab fa-linkedin"></i>Linkedin</span><i></i></a>
-            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ?si=f597ddae81ab484d" class="contact-social-btn sp" target="_blank"><span><i class="fab fa-spotify"></i>Spotify</span><i></i></a>
-            <a href="#" class="contact-social-btn site"><span><i class="fas fa-link"></i>dilshan.me</span><i></i></a>
+            <a href="#" class="contact-social-btn yt"><i class="fab fa-youtube"></i> Days of Dilshan</a>
+            <a href="#" class="contact-social-btn myhub"><i class="fas fa-globe"></i> myhub.lk</a>
+            <a href="#" class="contact-social-btn ig"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#" class="contact-social-btn fb"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#" class="contact-social-btn li"><i class="fab fa-linkedin"></i> Linkedin</a>
+            <a href="#" class="contact-social-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
+            <a href="#" class="contact-social-btn site"><i class="fas fa-link"></i> dilshan.me</a>
         </div>
     </div>
     <script>

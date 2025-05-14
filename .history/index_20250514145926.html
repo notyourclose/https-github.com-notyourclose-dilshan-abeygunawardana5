@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilshan Abeygunawardana | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #fff;
+            /* Restore animated gradient background */
+            background: linear-gradient(-45deg, #0a0c15, #1a237e, #3b82f6, #0a0c15);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease-in-out infinite;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(17,19,26,0.98);
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 48px;
+            letter-spacing: 1px;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 32px;
+        }
+        .navbar nav a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .navbar nav a.active,
+        .navbar nav a:hover {
+            color: #3b82f6;
+        }
+        .navbar nav a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+        }
+        .main-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 0 10vw;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        .left-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+            animation: fadeInLeft 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+        }
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: #3b82f6;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInTitle 1.5s 0.5s forwards;
+        }
+        .main-title span {
+            display: block;
+            color: #7faaff;
+        }
+        .roles {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 24px;
+            font-weight: 400;
+            min-height: 28px;
+            white-space: pre;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 2;
+            animation: fadeInRight 1.2s cubic-bezier(.77,0,.18,1) 0.4s both;
+        }
+        .profile-img {
+            width: 340px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #181c2a;
+            border: 6px solid #23263a;
+            box-shadow: 0 0 40px 0 #3b82f6, 0 8px 40px 0 rgba(59,130,246,0.12);
+            animation: float 3s ease-in-out infinite, glow 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInTitle {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 40px 0 #3b82f6, 0 8px 40px 0 rgba(59,130,246,0.12); }
+            100% { box-shadow: 0 0 80px 10px #7faaff, 0 8px 40px 0 rgba(59,130,246,0.12); }
+        }
+        /* Channels Section */
+        .channels-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .channels-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .channels-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .channels-cards {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .channel-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 36px 32px 32px 32px;
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s, box-shadow 0.4s, opacity 0.8s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .channel-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .channel-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .channel-icon {
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+            color: #3b82f6;
+        }
+        .channel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .channel-desc {
+            font-size: 1.05rem;
+            color: #bbb;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .channel-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 8px;
+        }
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .subscribe-btn {
+            margin-top: 18px;
+            background: #111b3f;
+            color: #fff;
+            border: 2px solid #3b82f6;
+            border-radius: 22px;
+            padding: 10px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 8px #3b82f6, 0 0 16px #3b82f6;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .subscribe-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(90deg, #3b82f6, #7faaff, #3b82f6, #7faaff);
+            background-size: 200% 200%;
+            filter: blur(8px);
+            opacity: 0.7;
+            z-index: -1;
+            border-radius: 24px;
+            animation: neonGlow 2s linear infinite;
+        }
+        @keyframes neonGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .subscribe-btn:hover, .subscribe-btn:focus {
+            background: #3b82f6;
+            color: #fff;
+            box-shadow: 0 0 24px #3b82f6, 0 0 48px #7faaff;
+        }
+        @media (max-width: 900px) {
+            .channels-cards {
+                flex-direction: column;
+                gap: 28px;
+            }
+            .channels-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+    </style>
+    <!-- For icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Dilshan</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#channels-section">Channels</a>
+            <a href="#">About</a>
+            <a href="#">Achievements</a>
+            <a href="#">Media</a>
+            <a href="#">Podcast</a>
+            <a href="#">Fan Art</a>
+            <a href="#">Apps</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div id="home" class="main-section">
+        <div class="left-content">
+            <div class="main-title">Dilshan <span>Abaygunawardhana</span></div>
+            <div class="roles" id="roles"></div>
+        </div>
+        <div class="right-content">
+            <img src="dilshanabeygunawardananetworth2.png" alt="Dilshan Abeygunawardana" class="profile-img">
+        </div>
+    </div>
+    <div id="channels-section" class="channels-section">
+        <div class="channels-title">My Channels</div>
+        <div class="channels-cards">
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fas fa-tv"></i></div>
+                <div class="channel-title">MyHub.lk</div>
+                <div class="channel-desc">Tech reviews, tutorials, and digital lifestyle content.<br>Leading tech education platform in Sri Lanka, featuring in-depth tutorials, tech reviews, and digital innovation insights.</div>
+                <div class="channel-stats">
+                    <div class="stat">
+                        <div class="stat-value">284K+</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">867</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                </div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fas fa-video"></i></div>
+                <div class="channel-title">Day Of Dilshan</div>
+                <div class="channel-desc">Daily vlogs and lifestyle content.<br>Personal lifestyle channel sharing daily adventures, entrepreneurial journey, and inspiring stories.</div>
+                <div class="channel-stats">
+                    <div class="stat">
+                        <div class="stat-value">177K+</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">339</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                </div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Typewriter effect for roles
+        const rolesText = 'Content Creator • Vlogger • Tech Enthusiast';
+        const rolesElem = document.getElementById('roles');
+        let i = 0;
+        function typeWriter() {
+            if (i <= rolesText.length) {
+                rolesElem.textContent = rolesText.substring(0, i);
+                i++;
+                setTimeout(typeWriter, 40);
+            }
+        }
+        typeWriter();
+
+        // Smooth reveal animations for channels section
+        function revealOnScroll() {
+            const title = document.querySelector('.channels-title');
+            const cards = document.querySelectorAll('.channel-card');
+            const trigger = window.innerHeight * 0.85;
+            if (title.getBoundingClientRect().top < trigger) {
+                title.classList.add('visible');
+            }
+            cards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+</html> 

@@ -25,87 +25,53 @@
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
         }
-        /* --- Glassmorphism Navbar --- */
         .navbar {
-          width: 100%;
-          background: rgba(17,19,26,0.75);
-          backdrop-filter: blur(12px);
-          border-bottom: 1.5px solid rgba(59,130,246,0.10);
-          box-shadow: 0 4px 32px 0 rgba(59,130,246,0.08);
-          display: flex;
-          align-items: center;
-          padding: 0 48px;
-          height: 64px;
-          box-sizing: border-box;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: 100;
-          transition: background 0.3s, box-shadow 0.3s;
+            width: 100%;
+            background: rgba(17,19,26,0.98);
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
-
-        /* --- Clickable Logo --- */
         .navbar .logo {
-          font-weight: 700;
-          font-size: 1.5rem;
-          color: #fff;
-          margin-right: 48px;
-          letter-spacing: 1px;
-          text-decoration: none;
-          cursor: pointer;
-          transition: color 0.2s;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 48px;
+            letter-spacing: 1px;
         }
-        .navbar .logo:hover {
-          color: #3b82f6;
+        .navbar nav {
+            display: flex;
+            gap: 32px;
         }
-
-        /* --- Animated Underline for Nav Links --- */
         .navbar nav a {
-          color: #bbb;
-          text-decoration: none;
-          font-size: 1rem;
-          font-weight: 500;
-          position: relative;
-          padding: 0 0 4px 0;
-          transition: color 0.2s;
-          overflow: hidden;
-        }
-        .navbar nav a::after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 0%;
-          height: 2px;
-          background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
-          border-radius: 2px;
-          transition: width 0.3s cubic-bezier(.77,0,.18,1);
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
         }
         .navbar nav a.active,
         .navbar nav a:hover {
-          color: #3b82f6;
+            color: #3b82f6;
         }
-        .navbar nav a.active::after,
-        .navbar nav a:hover::after {
-          width: 100%;
+        .navbar nav a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
         }
-
-        /* --- Social Icons (Desktop Only) --- */
-        .navbar .social-icons {
-          display: flex;
-          gap: 18px;
-          margin-left: auto;
-        }
-        .navbar .social-icons a {
-          color: #bbb;
-          font-size: 1.18rem;
-          transition: color 0.2s;
-        }
-        .navbar .social-icons a:hover {
-          color: #3b82f6;
-        }
-
         .main-section {
             display: flex;
             align-items: center;
@@ -1194,465 +1160,13 @@
                 gap: 12px;
             }
         }
-        /* Contact Section Styles */
-        .contact-section {
-            background: #10131a;
-            padding: 120px 0 40px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .contact-title {
-            color: #fff;
-            font-size: 2.1rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        .contact-main {
-            display: flex;
-            gap: 48px;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto 32px auto;
-            justify-content: center;
-        }
-        .contact-form-col {
-            flex: 1;
-            min-width: 320px;
-            max-width: 440px;
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-form-title {
-            color: #3b82f6;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            background: #181c2a;
-            border: 1.5px solid #23263a;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            padding: 12px 16px;
-            outline: none;
-            transition: border 0.2s;
-            resize: none;
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border: 1.5px solid #3b82f6;
-        }
-        .contact-btn {
-            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 14px 0;
-            margin-top: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-            box-shadow: 0 2px 12px 0 rgba(59,130,246,0.10);
-        }
-        .contact-btn:hover {
-            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
-        }
-        .contact-note {
-            color: #bbb;
-            font-size: 0.98rem;
-            margin-top: 18px;
-            text-align: center;
-        }
-        .contact-info-col {
-            flex: 1;
-            min-width: 320px;
-            max-width: 440px;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .contact-info-card {
-            background: #181c2a;
-            border-radius: 14px;
-            padding: 32px 24px 24px 24px;
-            margin-bottom: 0;
-            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .contact-info-icon {
-            color: #3b82f6;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        .contact-info-title {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            text-align: center;
-        }
-        .contact-info-desc {
-            color: #bbb;
-            font-size: 1rem;
-            text-align: center;
-        }
-        .contact-phone-list {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 10px;
-        }
-        .contact-phone-card {
-            background: #151a24;
-            border-radius: 10px;
-            padding: 14px 18px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            box-shadow: 0 2px 8px 0 rgba(59,130,246,0.08);
-        }
-        .contact-phone-label {
-            color: #bbb;
-            font-size: 0.98rem;
-            margin-bottom: 4px;
-        }
-        .contact-phone-link {
-            color: #3b82f6;
-            font-size: 1.08rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .contact-phone-link:hover {
-            text-decoration: underline;
-        }
-        /* Modern Social Button Styles */
-        .contact-social-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 32px;
-        }
-        .contact-social-btn {
-            --clr: #3b82f6;
-            position: relative;
-            background: #222;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            border: none;
-            letter-spacing: 0.1rem;
-            font-size: 1rem;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: 0.2s;
-            margin: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            border: 2px solid var(--clr);
-        }
-        .contact-social-btn span {
-            position: relative;
-            z-index: 1;
-        }
-        .contact-social-btn i {
-            position: absolute;
-            inset: 0;
-            display: block;
-            z-index: 0;
-        }
-        .contact-social-btn:hover {
-            letter-spacing: 0.2rem;
-            padding: 1.1rem 2.7rem;
-            background: var(--clr);
-            color: #fff;
-            animation: box 3s infinite;
-        }
-        .contact-social-btn::before {
-            content: "";
-            position: absolute;
-            inset: 2px;
-            background: #272822;
-            border-radius: 6px;
-            z-index: 0;
-            transition: background 0.2s;
-        }
-        /* Custom colors for each button */
-        .contact-social-btn.yt { --clr: #ff0000; }
-        .contact-social-btn.myhub { --clr: #3b82f6; }
-        .contact-social-btn.ig { --clr: #e1306c; }
-        .contact-social-btn.fb { --clr: #1877f3; }
-        .contact-social-btn.li { --clr: #8a2be2; }
-        .contact-social-btn.sp { --clr: #1db954; }
-        .contact-social-btn.site { --clr: #0ff0fc; }
-        @keyframes box {
-            0% { box-shadow: 0 0 10px var(--clr); }
-            50% { box-shadow: 0 0 40px var(--clr); }
-            100% { box-shadow: 0 0 10px var(--clr); }
-        }
-        @media (max-width: 900px) {
-            .contact-main {
-                flex-direction: column;
-                gap: 32px;
-            }
-            .contact-form-col, .contact-info-col {
-                max-width: 100%;
-            }
-        }
-        .contact-social-btn span i {
-          margin-right: 10px;
-          margin-left: 0;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.yt span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.myhub span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.ig span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.fb span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.li span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.sp span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        .contact-social-btn.site span i {
-          margin-left: -32px;
-          margin-right: 10px;
-          font-size: 1.2em;
-          vertical-align: middle;
-        }
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 0 16px;
-                height: auto;
-            }
-            .navbar .logo {
-                margin: 16px 0 8px 0;
-                font-size: 1.2rem;
-            }
-            .navbar nav {
-                flex-direction: column;
-                gap: 0;
-                width: 100%;
-            }
-            .navbar nav a {
-                padding: 12px 0;
-                font-size: 1.05rem;
-                width: 100%;
-                border-bottom: 1px solid #23263a;
-            }
-            .navbar nav a:last-child {
-                border-bottom: none;
-            }
-            .main-section {
-                flex-direction: column;
-                padding: 80px 4vw 0 4vw;
-                min-height: unset;
-                gap: 32px;
-            }
-            .left-content, .right-content {
-                width: 100%;
-                align-items: center;
-                text-align: center;
-                justify-content: center;
-            }
-            .main-title {
-                font-size: 2rem;
-            }
-            .profile-img {
-                width: 160px;
-                height: 160px;
-                margin: 0 auto 24px auto;
-            }
-        }
-        /* Enhanced Responsive Styles */
-        @media (max-width: 1200px) {
-            .main-section {
-                padding: 0 5vw;
-            }
-            .channels-cards, .achievements-cards, .media-cards {
-                gap: 24px;
-            }
-            .fanart-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 900px) {
-            .main-section {
-                padding: 0 4vw;
-            }
-            .main-title {
-                font-size: 2.4rem;
-            }
-            .profile-img {
-                width: 280px;
-                height: 280px;
-            }
-            .channels-cards, .achievements-cards, .media-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            .channel-card, .achievement-card, .media-card {
-                width: 100%;
-                max-width: 500px;
-            }
-            .about-stats, .about-expertise, .podcast-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            .about-stat-card, .about-expertise-card, .podcast-stat-card {
-                width: 100%;
-                max-width: 500px;
-            }
-            .podcast-main {
-                flex-direction: column;
-                text-align: center;
-            }
-            .podcast-main-content {
-                max-width: 100%;
-            }
-            .contact-main {
-                flex-direction: column;
-                gap: 32px;
-            }
-            .contact-form-col, .contact-info-col {
-                width: 100%;
-                max-width: 500px;
-            }
-            .contact-social-row {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-section {
-                padding: 100px 4vw 40px 4vw;
-                flex-direction: column;
-                text-align: center;
-            }
-            .left-content {
-                margin-bottom: 40px;
-            }
-            .main-title {
-                font-size: 2rem;
-            }
-            .profile-img {
-                width: 220px;
-                height: 220px;
-            }
-            .channels-title, .about-title, .achievements-title, 
-            .media-title, .podcast-title, .fanart-title, .apps-title {
-                font-size: 1.8rem;
-            }
-            .channel-card, .achievement-card, .media-card,
-            .about-stat-card, .about-expertise-card, .podcast-stat-card {
-                padding: 24px;
-            }
-            .contact-title {
-                font-size: 1.8rem;
-            }
-            .contact-social-btn {
-                width: 100%;
-                margin: 8px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 1.8rem;
-            }
-            .roles {
-                font-size: 1rem;
-            }
-            .profile-img {
-                width: 180px;
-                height: 180px;
-            }
-            .channel-stats, .about-stats, .podcast-stats {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .stat, .about-stat-card, .podcast-stat-card {
-                width: 100%;
-            }
-            .fanart-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form input,
-            .contact-form textarea {
-                font-size: 0.95rem;
-            }
-            .contact-btn {
-                font-size: 1rem;
-            }
-        }
-
-        /* Fix for iOS Safari 100vh issue */
-        @supports (-webkit-touch-callout: none) {
-            .main-section, .channels-section, #about-section,
-            #achievements-section, #media-section, #podcast-section,
-            #fanart-section, #apps-section, .contact-section {
-                min-height: -webkit-fill-available;
-            }
-        }
     </style>
     <!-- For icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
     <div class="navbar">
-        <a href="#home" class="logo">Dilshan</a>
+        <div class="logo">Dilshan</div>
         <nav>
             <a href="#home" class="active">Home</a>
             <a href="#channels-section">Channels</a>
@@ -1662,14 +1176,8 @@
             <a href="#podcast-section">Podcast</a>
             <a href="#fanart-section">Fan Art</a>
             <a href="#apps-section">Apps</a>
-            <a href="#contact-section">Contact</a>
+            <a href="#">Contact</a>
         </nav>
-        <div class="social-icons">
-            <a href="https://youtube.com/@myhublk" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/dilshanabey" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/18rJAAjMuG" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-        </div>
     </div>
     <div id="home" class="main-section">
         <div class="left-content">
@@ -1929,11 +1437,10 @@
                         <span class="app-badge badge-gold">E-Swabhimani Winner</span>
                         <span class="app-badge badge-blue">First 3D Sinhala Game</span>
                     </div>
-                    <a href="#" class="app-btn">Download</a>
                 </div>
             </div>
             <div class="app-card">
-                <div class="app-img-box"><img src="64479294daabca001da8fa7f.jpg" alt="King Rawana" class="app-img"></div>
+                <div class="app-img-box"><img src="apps/kingrawana.jpg" alt="King Rawana" class="app-img"></div>
                 <div class="app-content">
                     <div class="app-title">King Rawana</div>
                     <div class="app-desc">Platformer PC Game based on the Sri Lankan Legendary King, Rawana.</div>
@@ -1942,9 +1449,9 @@
                 </div>
             </div>
             <div class="app-card">
-                <div class="app-img-box"><img src="hqdefault (1).jpg" alt="Singho AKA" class="app-img"></div>
+                <div class="app-img-box"><img src="apps/singhoaka2.jpg" alt="Singho AKA සිංහෝකා 2" class="app-img"></div>
                 <div class="app-content">
-                    <div class="app-title">Singho AKA</div>
+                    <div class="app-title">Singho AKA සිංහෝකා 2</div>
                     <div class="app-desc">Sri Lanka's First Platformer Sinhala mobile game. Features an old man who uses spells against evil.</div>
                     <div class="app-badges">
                         <span class="app-badge badge-blue">TV Featured</span>
@@ -1953,53 +1460,6 @@
                     <a href="#" class="app-btn">Download</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Contact Section HTML -->
-    <div id="contact-section" class="contact-section">
-        <div class="contact-title">Connect With Me</div>
-        <div class="contact-main">
-            <div class="contact-form-col">
-                <div class="contact-form-title">Business Inquiries Only</div>
-                <form class="contact-form" autocomplete="off">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="contact-btn">Send Message</button>
-                </form>
-                <div class="contact-note">For other purposes, please email me directly.</div>
-            </div>
-            <div class="contact-info-col">
-                <div class="contact-info-card">
-                    <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-info-title">Office Location</div>
-                    <div class="contact-info-desc">335, Main Street,<br>Eheliyagoda, Sri Lanka</div>
-                </div>
-                <div class="contact-info-card">
-                    <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
-                    <div class="contact-info-title">Contact Numbers</div>
-                    <div class="contact-phone-list">
-                        <div class="contact-phone-card">
-                            <div class="contact-phone-label">Chinthana (Manager)</div>
-                            <a href="tel:+94703506500" class="contact-phone-link"><i class="fas fa-phone"></i> +94 70 350 6500</a>
-                        </div>
-                        <div class="contact-phone-card">
-                            <div class="contact-phone-label">Vikum (Marketing)</div>
-                            <a href="tel:+94775867752" class="contact-phone-link"><i class="fas fa-phone"></i> +94 77 586 7752</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-social-row">
-            <a href="https://youtube.com/@daysofdilshan?si=BLAtHfgmrOIaeHhm" class="contact-social-btn yt" target="_blank"><span><i class="fab fa-youtube"></i>Days of Dilshan</span><i></i></a>
-            <a href="https://youtube.com/@myhublk?si=-ykLta8waZDQ94lF" class="contact-social-btn myhub" target="_blank"><span><i class="fas fa-globe"></i>myhub.lk</span><i></i></a>
-            <a href="https://www.instagram.com/dilshanabey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="contact-social-btn ig" target="_blank"><span><i class="fab fa-instagram"></i>Instagram</span><i></i></a>
-            <a href="https://www.facebook.com/share/18rJAAjMuG/?mibextid=wwXIfr" class="contact-social-btn fb" target="_blank"><span><i class="fab fa-facebook"></i>Facebook</span><i></i></a>
-            <a href="#" class="contact-social-btn li"><span><i class="fab fa-linkedin"></i>Linkedin</span><i></i></a>
-            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ?si=f597ddae81ab484d" class="contact-social-btn sp" target="_blank"><span><i class="fab fa-spotify"></i>Spotify</span><i></i></a>
-            <a href="#" class="contact-social-btn site"><span><i class="fas fa-link"></i>dilshan.me</span><i></i></a>
         </div>
     </div>
     <script>

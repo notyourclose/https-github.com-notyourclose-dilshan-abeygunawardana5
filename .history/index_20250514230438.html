@@ -25,87 +25,53 @@
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
         }
-        /* --- Glassmorphism Navbar --- */
         .navbar {
-          width: 100%;
-          background: rgba(17,19,26,0.75);
-          backdrop-filter: blur(12px);
-          border-bottom: 1.5px solid rgba(59,130,246,0.10);
-          box-shadow: 0 4px 32px 0 rgba(59,130,246,0.08);
-          display: flex;
-          align-items: center;
-          padding: 0 48px;
-          height: 64px;
-          box-sizing: border-box;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: 100;
-          transition: background 0.3s, box-shadow 0.3s;
+            width: 100%;
+            background: rgba(17,19,26,0.98);
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
-
-        /* --- Clickable Logo --- */
         .navbar .logo {
-          font-weight: 700;
-          font-size: 1.5rem;
-          color: #fff;
-          margin-right: 48px;
-          letter-spacing: 1px;
-          text-decoration: none;
-          cursor: pointer;
-          transition: color 0.2s;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 48px;
+            letter-spacing: 1px;
         }
-        .navbar .logo:hover {
-          color: #3b82f6;
+        .navbar nav {
+            display: flex;
+            gap: 32px;
         }
-
-        /* --- Animated Underline for Nav Links --- */
         .navbar nav a {
-          color: #bbb;
-          text-decoration: none;
-          font-size: 1rem;
-          font-weight: 500;
-          position: relative;
-          padding: 0 0 4px 0;
-          transition: color 0.2s;
-          overflow: hidden;
-        }
-        .navbar nav a::after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 0%;
-          height: 2px;
-          background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
-          border-radius: 2px;
-          transition: width 0.3s cubic-bezier(.77,0,.18,1);
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
         }
         .navbar nav a.active,
         .navbar nav a:hover {
-          color: #3b82f6;
+            color: #3b82f6;
         }
-        .navbar nav a.active::after,
-        .navbar nav a:hover::after {
-          width: 100%;
+        .navbar nav a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
         }
-
-        /* --- Social Icons (Desktop Only) --- */
-        .navbar .social-icons {
-          display: flex;
-          gap: 18px;
-          margin-left: auto;
-        }
-        .navbar .social-icons a {
-          color: #bbb;
-          font-size: 1.18rem;
-          transition: color 0.2s;
-        }
-        .navbar .social-icons a:hover {
-          color: #3b82f6;
-        }
-
         .main-section {
             display: flex;
             align-items: center;
@@ -1528,6 +1494,12 @@
         }
 
         @media (max-width: 900px) {
+            .navbar {
+                padding: 0 24px;
+            }
+            .navbar nav {
+                gap: 24px;
+            }
             .main-section {
                 padding: 0 4vw;
             }
@@ -1576,6 +1548,28 @@
         }
 
         @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 16px;
+            }
+            .navbar .logo {
+                margin-bottom: 16px;
+            }
+            .navbar nav {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+            .navbar nav a {
+                padding: 12px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(59,130,246,0.1);
+            }
+            .navbar nav a:last-child {
+                border-bottom: none;
+            }
             .main-section {
                 padding: 100px 4vw 40px 4vw;
                 flex-direction: column;
@@ -1646,13 +1640,132 @@
                 min-height: -webkit-fill-available;
             }
         }
+        /* Add to <style> */
+        .navbar-toggle {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          margin-left: auto;
+          z-index: 120;
+          position: relative;
+          transition: color 0.2s;
+        }
+        .navbar-toggle span {
+          display: block;
+          width: 28px;
+          height: 3px;
+          margin: 5px 0;
+          background: #fff;
+          border-radius: 2px;
+          transition: 0.4s;
+        }
+        .navbar-toggle.open span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 6px);
+        }
+        .navbar-toggle.open span:nth-child(2) {
+          opacity: 0;
+        }
+        .navbar-toggle.open span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Overlay for menu */
+        .mobile-nav-overlay {
+          display: none;
+          position: fixed;
+          top: 0; left: 0; width: 100vw; height: 100vh;
+          background: rgba(17,19,26,0.65);
+          backdrop-filter: blur(6px);
+          z-index: 109;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .mobile-nav-overlay.active {
+          display: block;
+          opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+          .navbar-toggle {
+            display: flex;
+          }
+          .navbar {
+            padding: 0 16px;
+            height: 56px;
+          }
+          .navbar .logo {
+            z-index: 121;
+            position: relative;
+            font-size: 1.3rem;
+            margin: 0;
+            padding: 0;
+            height: 56px;
+            display: flex;
+            align-items: center;
+          }
+          .navbar nav {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100vh;
+            background: #181c2a;
+            border-top-left-radius: 18px;
+            border-bottom-left-radius: 18px;
+            box-shadow: -8px 0 32px 0 rgba(0,0,0,0.18);
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 0;
+            padding: 80px 0 0 0;
+            opacity: 1;
+            pointer-events: auto;
+            transition: right 0.35s cubic-bezier(.77,0,.18,1);
+            z-index: 111;
+          }
+          .navbar nav.open {
+            right: 0;
+          }
+          .navbar nav a {
+            padding: 20px 32px;
+            font-size: 1.18rem;
+            width: 100%;
+            text-align: left;
+            border-bottom: 1px solid #23263a;
+            color: #fff;
+            background: none;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 0 16px 16px 0;
+            position: relative;
+          }
+          .navbar nav a:last-child {
+            border-bottom: none;
+          }
+          .navbar nav a.active,
+          .navbar nav a:hover {
+            color: #3b82f6;
+            background: rgba(59,130,246,0.10);
+          }
+        }
     </style>
     <!-- For icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
     <div class="navbar">
-        <a href="#home" class="logo">Dilshan</a>
+        <div class="logo">Dilshan</div>
+        <!-- Add inside .navbar, before <nav> -->
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav>
             <a href="#home" class="active">Home</a>
             <a href="#channels-section">Channels</a>
@@ -1664,12 +1777,6 @@
             <a href="#apps-section">Apps</a>
             <a href="#contact-section">Contact</a>
         </nav>
-        <div class="social-icons">
-            <a href="https://youtube.com/@myhublk" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/dilshanabey" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/18rJAAjMuG" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-        </div>
     </div>
     <div id="home" class="main-section">
         <div class="left-content">
@@ -2002,6 +2109,7 @@
             <a href="#" class="contact-social-btn site"><span><i class="fas fa-link"></i>dilshan.me</span><i></i></a>
         </div>
     </div>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
     <script>
         // Typewriter effect for roles
         const rolesText = 'Content Creator • Vlogger • Tech Enthusiast';
@@ -2212,6 +2320,20 @@
         }
         window.addEventListener('scroll', revealAppsOnScroll);
         window.addEventListener('load', revealAppsOnScroll);
+
+        const toggleBtn = document.querySelector('.navbar-toggle');
+        const nav = document.querySelector('.navbar nav');
+        const overlay = document.getElementById('mobileNavOverlay');
+        toggleBtn.addEventListener('click', () => {
+          nav.classList.toggle('open');
+          toggleBtn.classList.toggle('open');
+          overlay.classList.toggle('active');
+        });
+        overlay.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggleBtn.classList.remove('open');
+          overlay.classList.remove('active');
+        });
     </script>
 </body>
 </html> 
