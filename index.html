@@ -1640,6 +1640,91 @@
                 min-height: -webkit-fill-available;
             }
         }
+        /* Add to <style> */
+        .navbar-toggle {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          margin-left: auto;
+          z-index: 120;
+          position: relative;
+        }
+        .navbar-toggle span {
+          display: block;
+          width: 28px;
+          height: 3px;
+          margin: 5px 0;
+          background: #fff;
+          border-radius: 2px;
+          transition: 0.4s;
+        }
+        .navbar-toggle.open span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 6px);
+        }
+        .navbar-toggle.open span:nth-child(2) {
+          opacity: 0;
+        }
+        .navbar-toggle.open span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+        @media (max-width: 900px) {
+          .navbar-toggle {
+            display: flex;
+          }
+          .navbar nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(17,19,26,0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 0;
+            box-shadow: none;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, max-height 0.3s;
+            z-index: 110;
+          }
+          .navbar nav.open {
+            max-height: 100vh;
+            opacity: 1;
+            pointer-events: auto;
+          }
+          .navbar nav a {
+            padding: 22px 0;
+            font-size: 1.3rem;
+            width: 100vw;
+            text-align: center;
+            border-bottom: 1px solid #23263a;
+            color: #fff;
+            background: none;
+            transition: background 0.2s, color 0.2s;
+          }
+          .navbar nav a:last-child {
+            border-bottom: none;
+          }
+          .navbar nav a.active,
+          .navbar nav a:hover {
+            color: #3b82f6;
+            background: rgba(59,130,246,0.08);
+          }
+          .navbar .logo {
+            z-index: 121;
+            position: relative;
+          }
+        }
     </style>
     <!-- For icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
@@ -1647,6 +1732,12 @@
 <body>
     <div class="navbar">
         <div class="logo">Dilshan</div>
+        <!-- Add inside .navbar, before <nav> -->
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav>
             <a href="#home" class="active">Home</a>
             <a href="#channels-section">Channels</a>
@@ -2200,6 +2291,13 @@
         }
         window.addEventListener('scroll', revealAppsOnScroll);
         window.addEventListener('load', revealAppsOnScroll);
+
+        const toggleBtn = document.querySelector('.navbar-toggle');
+        const nav = document.querySelector('.navbar nav');
+        toggleBtn.addEventListener('click', () => {
+          nav.classList.toggle('open');
+          toggleBtn.classList.toggle('open');
+        });
     </script>
 </body>
 </html> 
