@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilshan Abeygunawardana | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #fff;
+            /* Restore animated gradient background */
+            background: linear-gradient(-45deg, #111111, #232323, #181818, #222222);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease-in-out infinite;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(17,19,26,0.98);
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 48px;
+            letter-spacing: 1px;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 32px;
+        }
+        .navbar nav a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .navbar nav a.active,
+        .navbar nav a:hover {
+            color: #3b82f6;
+        }
+        .navbar nav a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+        }
+        .main-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 0 10vw;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        .left-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+            animation: fadeInLeft 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+        }
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: #3b82f6;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInTitle 1.5s 0.5s forwards;
+        }
+        .main-title span {
+            display: block;
+            color: #7faaff;
+        }
+        .roles {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 24px;
+            font-weight: 400;
+            min-height: 28px;
+            white-space: pre;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 2;
+            animation: fadeInRight 1.2s cubic-bezier(.77,0,.18,1) 0.4s both;
+        }
+        .profile-img {
+            width: 340px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #181c2a;
+            border: 6px solid #23263a;
+            box-shadow: 0 0 40px 0 #3b82f6, 0 8px 40px 0 rgba(59,130,246,0.12);
+            animation: float 3s ease-in-out infinite, glow 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInTitle {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 40px 0 #3b82f6, 0 8px 40px 0 rgba(59,130,246,0.12); }
+            100% { box-shadow: 0 0 80px 10px #7faaff, 0 8px 40px 0 rgba(59,130,246,0.12); }
+        }
+        /* Channels Section */
+        .channels-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .channels-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .channels-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .channels-cards {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .channel-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s, box-shadow 0.4s, opacity 0.8s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(60px);
+            border: none;
+            background-clip: padding-box;
+        }
+        .channel-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .channel-card::before {
+            display: none;
+        }
+        .channel-card > * { position: relative; z-index: 1; }
+        .channel-card.clicked {
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+            transform: scale(1.03);
+            transition: transform 0.2s cubic-bezier(.77,0,.18,1), box-shadow 0.2s cubic-bezier(.77,0,.18,1);
+        }
+        .channel-icon {
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+            color: #3b82f6;
+        }
+        .channel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .channel-desc {
+            font-size: 1.05rem;
+            color: #bbb;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .channel-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 8px;
+        }
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .subscribe-btn, .neon-btn, button {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: 0.5s;
+            margin-top: 40px;
+            letter-spacing: 4px;
+            background: transparent;
+            border: 2px solid #03e9f4;
+            border-radius: 22px;
+            box-shadow: 0 0 8px #03e9f4, 0 0 16px #03e9f4;
+            z-index: 1;
+        }
+        .subscribe-btn:hover, .neon-btn:hover, button:hover {
+            background: #03e9f4;
+            color: #111b3f;
+            box-shadow: 0 0 24px #03e9f4, 0 0 48px #03e9f4;
+        }
+        /* Neon input styles */
+        .login-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+        .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+        @media (max-width: 900px) {
+            .channels-cards {
+                flex-direction: column;
+                gap: 28px;
+            }
+            .channels-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+        /* Popup Modal Styles */
+        .popup-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInBg 0.3s;
+        }
+        .popup-modal.active {
+            display: flex;
+        }
+        @keyframes fadeInBg {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .popup-content {
+            background: #181c2a;
+            border-radius: 18px;
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+            padding: 36px 32px 32px 32px;
+            min-width: 320px;
+            max-width: 90vw;
+            color: #fff;
+            position: relative;
+            transform: scale(0.85);
+            opacity: 0;
+            animation: popupIn 0.35s cubic-bezier(.77,0,.18,1) forwards;
+        }
+        @keyframes popupIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #03e9f4;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            transition: color 0.2s;
+        }
+        .popup-close:hover {
+            color: #fff;
+        }
+        /* About Me Section Styles */
+        #about-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .about-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .about-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .about-stats {
+            display: flex;
+            gap: 32px;
+            margin: 36px 0 32px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .about-stat-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            min-width: 220px;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .about-stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .about-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+        .about-stat-label {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .about-stat-desc {
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .about-intro {
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .about-journey {
+            color: #bbb;
+            font-size: 1.05rem;
+            text-align: center;
+            margin-bottom: 36px;
+            max-width: 800px;
+        }
+        .about-expertise {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .about-expertise-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            min-width: 220px;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .about-expertise-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .about-expertise-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+        .about-expertise-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .about-expertise-desc {
+            font-size: 0.98rem;
+            color: #bbb;
+        }
+        .about-expertise-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        @media (max-width: 900px) {
+            .about-stats, .about-expertise {
+                flex-direction: column;
+                gap: 18px;
+            }
+            #about-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+        .about-expertise-card, .about-stat-card, .channel-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            min-width: 220px;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .about-expertise-card.visible, .about-stat-card.visible, .channel-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .about-expertise-card:hover, .about-stat-card:hover, .channel-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        /* Achievements & Impact Section Styles */
+        #achievements-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .achievements-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .achievements-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 80px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .achievements-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 36px;
+        }
+        .achievement-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            min-width: 320px;
+            max-width: 400px;
+            text-align: left;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+            position: relative;
+        }
+        .achievement-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .achievement-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .achievement-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .achievement-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .achievement-desc {
+            font-size: 1.01rem;
+            color: #bbb;
+            margin-bottom: 16px;
+        }
+        .achievement-extra, .achievement-card .achievement-extra span, .achievement-card .achievement-extra i {
+            color: #3b82f6 !important;
+            font-weight: 600;
+        }
+        @media (max-width: 900px) {
+            .achievements-cards {
+                flex-direction: column;
+                gap: 18px;
+            }
+            #achievements-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+        /* Media Section Styles */
+        #media-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .media-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .media-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .media-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 36px;
+        }
+        .media-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 0 0 24px 0;
+            min-width: 320px;
+            max-width: 350px;
+            text-align: left;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .media-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .media-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .media-img-box {
+            width: 100%;
+            height: 180px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .media-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.8rem;
+            color: #3b82f6;
+            background: rgba(0,0,0,0.45);
+            border-radius: 50%;
+            padding: 10px 16px 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-content {
+            padding: 18px 24px 0 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .media-title-card {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .media-desc {
+            font-size: 1.01rem;
+            color: #bbb;
+            margin-bottom: 18px;
+        }
+        .media-btn {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 12px 0 rgba(59,130,246,0.10);
+            margin-top: auto;
+            display: inline-block;
+        }
+        .media-btn:hover {
+            background: #2563eb;
+        }
+        @media (max-width: 900px) {
+            .media-cards {
+                flex-direction: column;
+                gap: 18px;
+            }
+            #media-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+        /* Podcast Section Styles */
+        #podcast-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .podcast-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .podcast-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .podcast-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+        .podcast-logo-box {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 32px 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+            min-height: 220px;
+        }
+        .podcast-logo-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 16px;
+            background: #222;
+        }
+        .podcast-main-content {
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .podcast-quote {
+            color: #3b82f6;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .podcast-desc {
+            color: #bbb;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+        }
+        .podcast-stats {
+            display: flex;
+            gap: 32px;
+            margin: 36px 0 32px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .podcast-stat-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            padding: 32px 36px;
+            min-width: 180px;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .podcast-stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .podcast-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+        .podcast-stat-label {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .podcast-timeline {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 32px;
+            padding: 0 16px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin-right: 18px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            color: #bbb;
+            font-size: 1.05rem;
+        }
+        .timeline-label {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 2px;
+            font-size: 1.08rem;
+        }
+        @media (max-width: 900px) {
+            .podcast-main {
+                flex-direction: column;
+                gap: 24px;
+            }
+            #podcast-section {
+                padding: 100px 0 24px 0;
+            }
+            .podcast-logo-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        /* Fan Art Section Styles */
+        #fanart-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+            background: #111;
+        }
+        .fanart-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .fanart-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .fanart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto 32px auto;
+            width: 100%;
+        }
+        .fanart-card {
+            background: rgba(30, 34, 48, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(59,130,246,0.10), 0 2px 8px 0 #0006;
+            overflow: hidden;
+            position: relative;
+            transition: box-shadow 0.3s, transform 0.3s;
+            cursor: pointer;
+            min-height: 260px;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        .fanart-card:hover {
+            box-shadow: 0 12px 40px 0 #3b82f6, 0 2px 8px 0 #0008;
+            transform: translateY(-4px) scale(1.03);
+        }
+        .fanart-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s;
+        }
+        .fanart-card:hover .fanart-img {
+            filter: brightness(0.7) blur(1px);
+        }
+        .fanart-overlay {
+            position: absolute;
+            left: 0; right: 0; bottom: 0; top: 0;
+            background: linear-gradient(0deg, rgba(59,130,246,0.85) 0%, rgba(30,34,48,0.0) 70%);
+            color: #fff;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 24px 16px 18px 16px;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .fanart-card:hover .fanart-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .fanart-overlay .fanart-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+            text-shadow: 0 2px 8px #0008;
+        }
+        .fanart-overlay .fanart-desc {
+            font-size: 0.98rem;
+            color: #e0eaff;
+            text-shadow: 0 1px 4px #0006;
+        }
+        .fanart-loadmore {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 12px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 12px 0 rgba(59,130,246,0.10);
+            display: block;
+            margin: 0 auto 32px auto;
+        }
+        .fanart-loadmore:hover {
+            background: #2563eb;
+        }
+        @media (max-width: 900px) {
+            .fanart-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+        @media (max-width: 600px) {
+            .fanart-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+        /* Apps Section Styles */
+        #apps-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+        .apps-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+        }
+        .apps-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .apps-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .app-card {
+            background: rgba(20, 22, 32, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: none;
+            background-clip: padding-box;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .app-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 48px 0 rgba(59,130,246,0.18);
+        }
+        .app-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .app-img-box {
+            width: 100%;
+            height: 120px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            overflow: hidden;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .app-content {
+            padding: 18px 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .app-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+        .app-desc {
+            font-size: 1.01rem;
+            color: #bbb;
+            margin-bottom: 16px;
+        }
+        .app-badges {
+            margin-bottom: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .app-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #fff;
+            background: #222b;
+            margin-right: 6px;
+        }
+        .badge-gold {
+            background: linear-gradient(90deg, #ffd700 60%, #ffb300 100%);
+            color: #222;
+        }
+        .badge-blue {
+            background: #3b82f6;
+            color: #fff;
+        }
+        .badge-green {
+            background: #22c55e;
+            color: #fff;
+        }
+        .app-btn {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 12px 0 rgba(59,130,246,0.10);
+            margin-top: auto;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .app-btn:hover {
+            background: #2563eb;
+        }
+        @media (max-width: 900px) {
+            .apps-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+            .apps-section {
+                padding: 100px 0 24px 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .apps-cards {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+        /* Contact Section Styles */
+        .contact-section {
+            background: #10131a;
+            padding: 120px 0 40px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-title {
+            color: #fff;
+            font-size: 2.1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .contact-main {
+            display: flex;
+            gap: 48px;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 32px auto;
+            justify-content: center;
+        }
+        .contact-form-col {
+            flex: 1;
+            min-width: 320px;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form-title {
+            color: #3b82f6;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            background: #181c2a;
+            border: 1.5px solid #23263a;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            padding: 12px 16px;
+            outline: none;
+            transition: border 0.2s;
+            resize: none;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border: 1.5px solid #3b82f6;
+        }
+        .contact-btn {
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 14px 0;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 12px 0 rgba(59,130,246,0.10);
+        }
+        .contact-btn:hover {
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+        }
+        .contact-note {
+            color: #bbb;
+            font-size: 0.98rem;
+            margin-top: 18px;
+            text-align: center;
+        }
+        .contact-info-col {
+            flex: 1;
+            min-width: 320px;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .contact-info-card {
+            background: #181c2a;
+            border-radius: 14px;
+            padding: 32px 24px 24px 24px;
+            margin-bottom: 0;
+            box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info-icon {
+            color: #3b82f6;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .contact-info-title {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .contact-info-desc {
+            color: #bbb;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .contact-phone-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .contact-phone-card {
+            background: #151a24;
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 0 2px 8px 0 rgba(59,130,246,0.08);
+        }
+        .contact-phone-label {
+            color: #bbb;
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+        .contact-phone-link {
+            color: #3b82f6;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-phone-link:hover {
+            text-decoration: underline;
+        }
+        /* Modern Social Button Styles */
+        .contact-social-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+        .contact-social-btn {
+            --clr: #3b82f6;
+            position: relative;
+            background: #222;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 0.1rem;
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            border: 2px solid var(--clr);
+        }
+        .contact-social-btn span {
+            position: relative;
+            z-index: 1;
+        }
+        .contact-social-btn i {
+            position: absolute;
+            inset: 0;
+            display: block;
+            z-index: 0;
+        }
+        .contact-social-btn:hover {
+            letter-spacing: 0.2rem;
+            padding: 1.1rem 2.7rem;
+            background: var(--clr);
+            color: #fff;
+            animation: box 3s infinite;
+        }
+        .contact-social-btn::before {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: #272822;
+            border-radius: 6px;
+            z-index: 0;
+            transition: background 0.2s;
+        }
+        /* Custom colors for each button */
+        .contact-social-btn.yt { --clr: #ff0000; }
+        .contact-social-btn.myhub { --clr: #3b82f6; }
+        .contact-social-btn.ig { --clr: #e1306c; }
+        .contact-social-btn.fb { --clr: #1877f3; }
+        .contact-social-btn.li { --clr: #8a2be2; }
+        .contact-social-btn.sp { --clr: #1db954; }
+        .contact-social-btn.site { --clr: #0ff0fc; }
+        @keyframes box {
+            0% { box-shadow: 0 0 10px var(--clr); }
+            50% { box-shadow: 0 0 40px var(--clr); }
+            100% { box-shadow: 0 0 10px var(--clr); }
+        }
+        @media (max-width: 900px) {
+            .contact-main {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .contact-form-col, .contact-info-col {
+                max-width: 100%;
+            }
+        }
+        .contact-social-btn span i {
+          margin-right: 10px;
+          margin-left: 0;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.yt span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.myhub span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.ig span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.fb span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.li span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.sp span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+        .contact-social-btn.site span i {
+          margin-left: -32px;
+          margin-right: 10px;
+          font-size: 1.2em;
+          vertical-align: middle;
+        }
+    </style>
+    <!-- For icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Dilshan</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#channels-section">Channels</a>
+            <a href="#about-section">About</a>
+            <a href="#achievements-section">Achievements</a>
+            <a href="#media-section">Media</a>
+            <a href="#podcast-section">Podcast</a>
+            <a href="#fanart-section">Fan Art</a>
+            <a href="#apps-section">Apps</a>
+            <a href="#contact-section">Contact</a>
+        </nav>
+    </div>
+    <div id="home" class="main-section">
+        <div class="left-content">
+            <div class="main-title">Dilshan <span>Abaygunawardhana</span></div>
+            <div class="roles" id="roles"></div>
+        </div>
+        <div class="right-content">
+            <img src="dilshanabeygunawardananetworth2.png" alt="Dilshan Abeygunawardana" class="profile-img">
+        </div>
+    </div>
+    <div id="channels-section" class="channels-section">
+        <div class="channels-title">My Channels</div>
+        <div class="channels-cards">
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fas fa-tv"></i></div>
+                <div class="channel-title">MyHub.lk</div>
+                <div class="channel-desc">Tech reviews, tutorials, and digital lifestyle content.<br>Leading tech education platform in Sri Lanka, featuring in-depth tutorials, tech reviews, and digital innovation insights.</div>
+                <div class="channel-stats">
+                    <div class="stat">
+                        <div class="stat-value">284K+</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">867</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                </div>
+                <button class="subscribe-btn" onclick="window.open('https://www.youtube.com/@myHubLK', '_blank')">Subscribe</button>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fas fa-video"></i></div>
+                <div class="channel-title">Day Of Dilshan</div>
+                <div class="channel-desc">Daily vlogs and lifestyle content.<br>Personal lifestyle channel sharing daily adventures, entrepreneurial journey, and inspiring stories.</div>
+                <div class="channel-stats">
+                    <div class="stat">
+                        <div class="stat-value">177K+</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">339</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                </div>
+                <button class="subscribe-btn" onclick="window.open('https://www.youtube.com/results?search_query=Days+fo+Dilshan+', '_blank')" style="margin-top: 56px;">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <!-- Popup HTML -->
+    <div id="popup-modal" class="popup-modal">
+        <div class="popup-content" id="popup-content">
+            <button class="popup-close" id="popup-close">&times;</button>
+            <div id="popup-details"></div>
+        </div>
+    </div>
+    <!-- About Me Section HTML -->
+    <div id="about-section">
+        <div class="about-title">About Me</div>
+        <div class="about-stats">
+            <div class="about-stat-card">
+                <div class="about-stat-value">500K+</div>
+                <div class="about-stat-label">Total Followers</div>
+                <div class="about-stat-desc">Across all platforms</div>
+            </div>
+            <div class="about-stat-card">
+                <div class="about-stat-value">2</div>
+                <div class="about-stat-label">YouTube Awards</div>
+                <div class="about-stat-desc">Silver Play Buttons</div>
+            </div>
+            <div class="about-stat-card">
+                <div class="about-stat-value">Top 10%</div>
+                <div class="about-stat-label">Global Podcasts</div>
+                <div class="about-stat-desc">Spotify Rankings</div>
+            </div>
+        </div>
+        <div class="about-intro">
+            I'm Dilshan Abeygunawardana, an Entrepreneur and Content Creator passionate about making a difference.
+        </div>
+        <div class="about-journey">
+            Through my content, I've helped thousands of people transform their lives, from teens finding their path to entrepreneurs building successful businesses. My journey in content creation has led me to explore various fields:
+        </div>
+        <div class="about-expertise">
+            <div class="about-expertise-card">
+                <div class="about-expertise-icon"><i class="fas fa-tv"></i></div>
+                <div class="about-expertise-title">Tech Education</div>
+                <div class="about-expertise-desc">Empowering the next generation of digital innovators</div>
+            </div>
+            <div class="about-expertise-card">
+                <div class="about-expertise-icon"><i class="fas fa-podcast"></i></div>
+                <div class="about-expertise-title">Podcasting</div>
+                <div class="about-expertise-desc">Hosting one of Sri Lanka's top-rated shows</div>
+            </div>
+            <div class="about-expertise-card">
+                <div class="about-expertise-icon"><i class="fas fa-pen-nib"></i></div>
+                <div class="about-expertise-title">Digital Art</div>
+                <div class="about-expertise-desc">Creating NFTs and digital experiences</div>
+            </div>
+        </div>
+    </div>
+    <!-- Achievements & Impact Section HTML -->
+    <div id="achievements-section">
+        <div class="achievements-title">Achievements & Impact</div>
+        <div class="achievements-cards">
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-podcast"></i></div>
+                <div class="achievement-title">Podcast Success</div>
+                <div class="achievement-desc">Host of one of Sri Lanka's top-rated podcasts, recognized by USAID and ranked in Spotify's Top 10% globally. Consistently maintaining top positions in Sri Lankan podcast charts.</div>
+                <div class="achievement-extra">
+                    <span style="color:#3b82f6;font-weight:700;">#1</span> In Sri Lanka
+                    <span style="margin-left:18px;color:#3b82f6;font-weight:700;">10%</span> Global Ranking
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-pen-nib"></i></div>
+                <div class="achievement-title">Digital Art & NFTs</div>
+                <div class="achievement-desc">One of the world's highest-ranked NFT freelancers on Fiverr, helping create a wave of successful freelancers in Sri Lanka. Pioneering digital art education in the local community.</div>
+                <div class="achievement-extra"><i class="fas fa-award"></i> Top Rated Seller</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="achievement-title">Game Development</div>
+                <div class="achievement-desc">E-Swabhimani award winner for innovative game development. Created Sri Lanka's first Sinhala 3D PC game and multiple successful mobile games with cultural significance.</div>
+                <div class="achievement-extra"><i class="fas fa-trophy"></i> E-Swabhimani Winner</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-tv"></i></div>
+                <div class="achievement-title">Media Recognition</div>
+                <div class="achievement-desc">Featured on major networks including TV Derana, Sirasa TV, and various national publications. Regular contributor to tech education and digital innovation discussions.</div>
+                <div class="achievement-extra"><span style="color:#3b82f6;font-weight:700;">50+</span> Media Features</div>
+            </div>
+        </div>
+    </div>
+    <!-- Media Section HTML -->
+    <div id="media-section">
+        <div class="media-title">Media</div>
+        <div class="media-cards">
+            <div class="media-card">
+                <div class="media-img-box">
+                    <img class="media-img" src="maxresdefault.jpg" alt="TV Derana Feature">
+                    <span class="media-play"><i class="fas fa-play-circle"></i></span>
+                </div>
+                <div class="media-content">
+                    <div class="media-title-card">TV Derana Feature</div>
+                    <div class="media-desc">Featured on TV Derana's Days of Dilshan segment</div>
+                    <button class="media-btn" onclick="window.open('https://youtu.be/54qRzj-TxR4?si=sHxbBaNLG5p9g5ol', '_blank')">Watch Now</button>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-img-box">
+                    <img class="media-img" src="dilshanabeygunawardananetworth.png" alt="Sirasa Smart Show">
+                    <span class="media-play"><i class="fas fa-play-circle"></i></span>
+                </div>
+                <div class="media-content">
+                    <div class="media-title-card">Sirasa Smart Show</div>
+                    <div class="media-desc">Exclusive interview about my journey and achievements</div>
+                    <button class="media-btn" onclick="window.open('https://youtu.be/iXoUG0qi89Q?si=41paCbmKhkCxARJw', '_blank')">Watch Interview</button>
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-img-box">
+                    <img class="media-img" src="dilshanabeygunawardananetworth.png" alt="Derana Aruna Feature">
+                    <span class="media-play"><i class="fas fa-newspaper"></i></span>
+                </div>
+                <div class="media-content">
+                    <div class="media-title-card">Derana Aruna Feature</div>
+                    <div class="media-desc">Featured in Derana Aruna newspaper for contributions to digital innovation</div>
+                    <button class="media-btn" onclick="window.open('https://diary-of-dragond.blogspot.com', '_blank')">Read Article</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Podcast Section HTML -->
+    <div id="podcast-section">
+        <div class="podcast-title">Dilshan's Thoughts</div>
+        <div class="podcast-main">
+            <div class="podcast-logo-box">
+                <img class="podcast-logo-img" src="dilshansthoughts.png" alt="Dilshan's Thoughts">
+            </div>
+            <div class="podcast-main-content">
+                <div class="podcast-quote">"Questioning everything since childhood"</div>
+                <div class="podcast-desc">Simply, Dilshan's Thoughts are podcast episodes where I talk about life, the universe, religion, science and tech for hours alone, with my co-host (from season 2 onwards) or with a guest.</div>
+            </div>
+        </div>
+        <div class="podcast-stats">
+            <div class="podcast-stat-card">
+                <div class="podcast-stat-value">#1</div>
+                <div class="podcast-stat-label">Highest rated podcast in Sri Lanka</div>
+            </div>
+            <div class="podcast-stat-card">
+                <div class="podcast-stat-value">10%</div>
+                <div class="podcast-stat-label">Among most followed podcasts globally</div>
+            </div>
+            <div class="podcast-stat-card">
+                <div class="podcast-stat-value">15%</div>
+                <div class="podcast-stat-label">Among most shared podcasts globally</div>
+            </div>
+            <div class="podcast-stat-card">
+                <div class="podcast-stat-value">3</div>
+                <div class="podcast-stat-label">Successful seasons</div>
+            </div>
+        </div>
+        <div class="podcast-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-label">Early 2000s</span><br>
+                    Started questioning religion, social systems, and ethics. Had meaningful discussions with religious figures including Pitiduwe Siridhamma Thero.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-label">2011</span><br>
+                    Got access to the internet and began debunking myths online.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-label">YouTube Era</span><br>
+                    Started 'Dilshan's Thoughts' as a debunking video series. Created 20+ videos addressing various myths and misconceptions.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-label">Podcast Launch</span><br>
+                    Transformed the concept into a podcast format, reaching a more open-minded audience. Quickly rose to #1 on Sri Lankan podcast charts.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-label">Season 2</span><br>
+                    Joined by co-host Chanuka Nadun, continuing to dominate charts and expand global reach.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fan Art Section HTML -->
+    <div id="fanart-section">
+        <div class="fanart-title">Fan Art Gallery</div>
+        <div class="fanart-grid" id="fanart-grid">
+            <!-- Fan art cards will be injected by JS -->
+        </div>
+        <button class="fanart-loadmore" id="fanart-loadmore">Load More</button>
+    </div>
+    <!-- Apps Section HTML -->
+    <div id="apps-section" class="apps-section">
+        <div class="apps-title">Apps</div>
+        <div class="apps-cards">
+            <div class="app-card">
+                <div class="app-img-box"><img src="hqdefault.jpg" alt="Operation Wanni Series" class="app-img"></div>
+                <div class="app-content">
+                    <div class="app-title">Operation Wanni Series</div>
+                    <div class="app-desc">E-Swabhimani award winning Windows game series, one of the first 3D Sinhala PC games in Sri Lanka.</div>
+                    <div class="app-badges">
+                        <span class="app-badge badge-gold">E-Swabhimani Winner</span>
+                        <span class="app-badge badge-blue">First 3D Sinhala Game</span>
+                    </div>
+                    <a href="#" class="app-btn">Download</a>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="app-img-box"><img src="64479294daabca001da8fa7f.jpg" alt="King Rawana" class="app-img"></div>
+                <div class="app-content">
+                    <div class="app-title">King Rawana</div>
+                    <div class="app-desc">Platformer PC Game based on the Sri Lankan Legendary King, Rawana.</div>
+                    <div class="app-badges"></div>
+                    <a href="#" class="app-btn">Download</a>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="app-img-box"><img src="hqdefault (1).jpg" alt="Singho AKA" class="app-img"></div>
+                <div class="app-content">
+                    <div class="app-title">Singho AKA</div>
+                    <div class="app-desc">Sri Lanka's First Platformer Sinhala mobile game. Features an old man who uses spells against evil.</div>
+                    <div class="app-badges">
+                        <span class="app-badge badge-blue">TV Featured</span>
+                        <span class="app-badge badge-green">First Sinhala Platformer</span>
+                    </div>
+                    <a href="#" class="app-btn">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Section HTML -->
+    <div id="contact-section" class="contact-section">
+        <div class="contact-title">Connect With Me</div>
+        <div class="contact-main">
+            <div class="contact-form-col">
+                <div class="contact-form-title">Business Inquiries Only</div>
+                <form class="contact-form" autocomplete="off">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="contact-btn">Send Message</button>
+                </form>
+                <div class="contact-note">For other purposes, please email me directly.</div>
+            </div>
+            <div class="contact-info-col">
+                <div class="contact-info-card">
+                    <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-info-title">Office Location</div>
+                    <div class="contact-info-desc">335, Main Street,<br>Eheliyagoda, Sri Lanka</div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-info-title">Contact Numbers</div>
+                    <div class="contact-phone-list">
+                        <div class="contact-phone-card">
+                            <div class="contact-phone-label">Chinthana (Manager)</div>
+                            <a href="tel:+94703506500" class="contact-phone-link"><i class="fas fa-phone"></i> +94 70 350 6500</a>
+                        </div>
+                        <div class="contact-phone-card">
+                            <div class="contact-phone-label">Vikum (Marketing)</div>
+                            <a href="tel:+94775867752" class="contact-phone-link"><i class="fas fa-phone"></i> +94 77 586 7752</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-social-row">
+            <a href="https://youtube.com/@daysofdilshan?si=BLAtHfgmrOIaeHhm" class="contact-social-btn yt" target="_blank"><span><i class="fab fa-youtube"></i>Days of Dilshan</span><i></i></a>
+            <a href="https://youtube.com/@myhublk?si=-ykLta8waZDQ94lF" class="contact-social-btn myhub" target="_blank"><span><i class="fas fa-globe"></i>myhub.lk</span><i></i></a>
+            <a href="https://www.instagram.com/dilshanabey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="contact-social-btn ig" target="_blank"><span><i class="fab fa-instagram"></i>Instagram</span><i></i></a>
+            <a href="https://www.facebook.com/share/18rJAAjMuG/?mibextid=wwXIfr" class="contact-social-btn fb" target="_blank"><span><i class="fab fa-facebook"></i>Facebook</span><i></i></a>
+            <a href="#" class="contact-social-btn li"><span><i class="fab fa-linkedin"></i>Linkedin</span><i></i></a>
+            <a href="https://open.spotify.com/show/4HW6Ddj8saFLj9qP2j4FmQ?si=f597ddae81ab484d" class="contact-social-btn sp" target="_blank"><span><i class="fab fa-spotify"></i>Spotify</span><i></i></a>
+            <a href="#" class="contact-social-btn site"><span><i class="fas fa-link"></i>dilshan.me</span><i></i></a>
+        </div>
+    </div>
+    <script>
+        // Typewriter effect for roles
+        const rolesText = 'Content Creator • Vlogger • Tech Enthusiast';
+        const rolesElem = document.getElementById('roles');
+        let i = 0;
+        function typeWriter() {
+            if (i <= rolesText.length) {
+                rolesElem.textContent = rolesText.substring(0, i);
+                i++;
+                setTimeout(typeWriter, 40);
+            }
+        }
+        typeWriter();
+
+        let channelsRevealed = false;
+        function revealOnScroll() {
+            const title = document.querySelector('.channels-title');
+            const cards = document.querySelectorAll('.channel-card');
+            const trigger = window.innerHeight * 0.85;
+            if (title.getBoundingClientRect().top < trigger) {
+                title.classList.add('visible');
+                channelsRevealed = true;
+            }
+            cards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Add click effect to channel cards only after section is revealed
+        const channelCards = document.querySelectorAll('.channel-card');
+        channelCards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (channelsRevealed) {
+                    card.classList.add('clicked');
+                    setTimeout(() => card.classList.remove('clicked'), 250);
+                }
+            });
+        });
+
+        // Popup modal logic
+        const popupModal = document.getElementById('popup-modal');
+        const popupContent = document.getElementById('popup-content');
+        const popupDetails = document.getElementById('popup-details');
+        const popupClose = document.getElementById('popup-close');
+
+        const channelDetails = [
+            {
+                title: 'MyHub.lk',
+                icon: '<i class="fas fa-tv"></i>',
+                desc: 'Tech reviews, tutorials, and digital lifestyle content.<br>Leading tech education platform in Sri Lanka, featuring in-depth tutorials, tech reviews, and digital innovation insights.',
+                stats: '<b>284K+</b> Subscribers<br><b>867</b> Videos',
+                extra: 'Follow for the latest in tech and digital innovation!'
+            },
+            {
+                title: 'Day Of Dilshan',
+                icon: '<i class="fas fa-video"></i>',
+                desc: 'Daily vlogs and lifestyle content.<br>Personal lifestyle channel sharing daily adventures, entrepreneurial journey, and inspiring stories.',
+                stats: '<b>177K+</b> Subscribers<br><b>339</b> Videos',
+                extra: 'Join the journey and get inspired every day!'
+            }
+        ];
+
+        channelCards.forEach((card, idx) => {
+            card.addEventListener('click', () => {
+                if (channelsRevealed) {
+                    popupDetails.innerHTML = `
+                        <div style="font-size:2.2rem;color:#03e9f4;text-align:center;">${channelDetails[idx].icon}</div>
+                        <h2 style="margin:12px 0 8px 0;text-align:center;">${channelDetails[idx].title}</h2>
+                        <div style="color:#bbb;text-align:center;margin-bottom:12px;">${channelDetails[idx].desc}</div>
+                        <div style="color:#03e9f4;text-align:center;margin-bottom:16px;">${channelDetails[idx].stats}</div>
+                        <div style="text-align:center;">${channelDetails[idx].extra}</div>
+                    `;
+                    popupModal.classList.add('active');
+                }
+            });
+        });
+
+        popupClose.onclick = () => popupModal.classList.remove('active');
+        popupModal.onclick = e => {
+            if (e.target === popupModal) popupModal.classList.remove('active');
+        };
+
+        // Add to JS: Reveal animations for about cards
+        const aboutStatCards = document.querySelectorAll('.about-stat-card');
+        const aboutExpertiseCards = document.querySelectorAll('.about-expertise-card');
+        function revealAboutOnScroll() {
+            aboutStatCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+            aboutExpertiseCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealAboutOnScroll);
+        window.addEventListener('load', revealAboutOnScroll);
+
+        // JS: Reveal animations for achievement cards
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        function revealAchievementsOnScroll() {
+            achievementCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealAchievementsOnScroll);
+        window.addEventListener('load', revealAchievementsOnScroll);
+
+        // JS: Reveal animations for media cards
+        const mediaCards = document.querySelectorAll('.media-card');
+        function revealMediaOnScroll() {
+            mediaCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealMediaOnScroll);
+        window.addEventListener('load', revealMediaOnScroll);
+
+        // JS: Reveal animations for podcast stat cards
+        const podcastStatCards = document.querySelectorAll('.podcast-stat-card');
+        function revealPodcastOnScroll() {
+            podcastStatCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealPodcastOnScroll);
+        window.addEventListener('load', revealPodcastOnScroll);
+
+        // Fan Art Gallery Data
+        const fanArtImages = [
+            {src: 'fan arts/2.png', name: 'Fan Art 1', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/3.png', name: 'Fan Art 2', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/5.png', name: 'Fan Art 3', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/7.png', name: 'Fan Art 4', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/15.jpg', name: 'Fan Art 5', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/16.jpg', name: 'Fan Art 6', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/17.jpg', name: 'Fan Art 7', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/18.jpg', name: 'Fan Art 8', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/19.jpg', name: 'Fan Art 9', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/20.jpg', name: 'Fan Art 10', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/36.jpg', name: 'Fan Art 11', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/42.jpg', name: 'Fan Art 12', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/52.jpg', name: 'Fan Art 13', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/81.jpg', name: 'Fan Art 14', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/112.jpg', name: 'Fan Art 15', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/131.jpg', name: 'Fan Art 16', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/141.jpg', name: 'Fan Art 17', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/161.jpg', name: 'Fan Art 18', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/211.jpg', name: 'Fan Art 19', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/223.jpg', name: 'Fan Art 20', desc: 'Dilshan Abey fan art'},
+            {src: 'fan arts/120949461_748398435892277_4911056935635418629_n.jpg', name: 'Fan Art 21', desc: 'Dilshan Abey fan art'},
+        ];
+        const fanartGrid = document.getElementById('fanart-grid');
+        const fanartLoadMore = document.getElementById('fanart-loadmore');
+        let fanartPage = 0;
+        const FANART_PER_PAGE = 8;
+        function renderFanArt() {
+            const start = fanartPage * FANART_PER_PAGE;
+            const end = start + FANART_PER_PAGE;
+            const items = fanArtImages.slice(start, end);
+            items.forEach(img => {
+                const card = document.createElement('div');
+                card.className = 'fanart-card';
+                card.innerHTML = `
+                    <img class="fanart-img" src="${img.src}" alt="${img.name}">
+                    <div class="fanart-overlay">
+                        <div class="fanart-name">${img.name}</div>
+                        <div class="fanart-desc">${img.desc}</div>
+                    </div>
+                `;
+                fanartGrid.appendChild(card);
+            });
+            if (end >= fanArtImages.length) {
+                fanartLoadMore.style.display = 'none';
+            } else {
+                fanartLoadMore.style.display = 'block';
+            }
+        }
+        fanartLoadMore.onclick = function() {
+            fanartPage++;
+            renderFanArt();
+        };
+        // Initial render
+        fanartGrid.innerHTML = '';
+        fanartPage = 0;
+        renderFanArt();
+
+        // Reveal animations for app cards
+        const appCards = document.querySelectorAll('.app-card');
+        function revealAppsOnScroll() {
+            appCards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealAppsOnScroll);
+        window.addEventListener('load', revealAppsOnScroll);
+    </script>
+</body>
+</html> 
